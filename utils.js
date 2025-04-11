@@ -36,19 +36,48 @@ function countVowelsDetailed(str) {
 
 // Return factorial of the number
 function factorial(n) {
-  let num = n;
-  let toFactor = n - 1;
-  let numbers = 1;
-
-  while (toFactor != 0) {
-    numbers = num = num * toFactor;
-    toFactor = toFactor - 1;
-  }
-  
-  return numbers;
+  if (n <= 1) return 1;
+  return n* factorial(n - 1);
 }
 
-console.log(factorial(5))
+// Sum of numbers
+function sumTo(n) {
+  if (n <= 0) return 0;
+  return n + sumTo( n - 1);
+}
+
+// FizzBuzz
+function fizzBuzzToArray(start, end) {
+  const result = [];
+  
+  for (let num = start; num <= end; num++) {
+    if (num % 3 === 0 && num % 5 === 0) {
+      result.push('FizzBuzz')
+    } else if (num % 3 === 0) {
+      result.push('Fizz')
+    } else if (num % 5 === 0) {
+      result.push('Buzz')
+    } else {
+      result.push(num)
+    } 
+  }
+  result.push(num);
+}
+
+// Character frequency counter
+function characterFrequencyCounter(str) {
+  let object = {};
+  const cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/gi, '');
+  
+  for (let char of cleanedStr) {
+    if (char in object) {
+      object[char] += 1;
+    } else {
+      object[char] = 1;
+    }
+  }
+  return object;
+}
 
   // Export the functions
-  export { capitalize, reverseString, isPalindrome, countVowelsDetailed };
+  export { capitalize, reverseString, isPalindrome, countVowelsDetailed, factorial, sumTo, fizzBuzzToArray, characterFrequencyCounter };
